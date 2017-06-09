@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 /**********************************************************************
- * Service to manage HMI all global language.
+ * Service to manage Angular App all global language.
  * By default, if user not select language, show users browser language
  **********************************************************************/
 
@@ -26,11 +26,11 @@ export class LanguageConfigService {
    * @methodOf lang-preferences#method
    * @params <this.translate: TranslateService, langCodes: string[], this.selectLanguage: string>
    * @description
-   * Function to load language to use in HMI. Automatically detect our browser language and save in local
+   * Function to load language to use in Angular App. Automatically detect our browser language and save in local
    * preferences. If value store in preferences, load selection from localStorage
    ************************************************************************************************************/
     private load() {
-        // Add HMI all support languages
+        // Add Angular App all support languages
         this.translate.addLangs(langCodes);
         this.selectLanguage = this.getLanguage();
 
@@ -53,7 +53,7 @@ export class LanguageConfigService {
    * @methodOf lang-preferences#method
    * @params <this.translate: TranslateService, langCodes: string[], this.selectLanguage: string>
    * @description
-   * Function to load language to use in HMI. Automatically detect our browser language and save in local
+   * Function to load language to use in Angular App. Automatically detect our browser language and save in local
    * preferences. If value store in preferences, load selection from localStorage
    ************************************************************************************************************/
     private useLanguage() {
@@ -67,7 +67,7 @@ export class LanguageConfigService {
    * @methodOf lang-preferences#method
    * @params <this.translate: TranslateService, langCodes: string[], this.selectLanguage: string>
    * @description
-   * Function to load language to use in HMI. Automatically detect our browser language and save in local
+   * Function to load language to use in Angular App. Automatically detect our browser language and save in local
    * preferences. If value store in preferences, load selection from localStorage
    ************************************************************************************************************/
     private getLanguage() {
