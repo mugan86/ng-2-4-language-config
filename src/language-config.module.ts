@@ -15,9 +15,12 @@ import { LanguageConfigService } from './services/language-config.service';
             deps: [Http]
           }
         }),
+    ],
+    exports: [
+         TranslateModule
     ]
 })
-export class LanguageConfigModule { 
+export class LanguageConfigModule {
   static forRoot(): ModuleWithProviders {
         return {ngModule: LanguageConfigModule, providers: [LanguageConfigService]};
     }
