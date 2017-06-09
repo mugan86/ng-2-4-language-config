@@ -82,11 +82,11 @@ export class LanguageConfigService {
    * @ngdoc method
    * @name change()
    * @methodOf lang-preferences#method
-   * @params <language>
+   * @params <language: any>
    * @description
    * Changes language preference for the whole app with select language (code: es, eu or en in this case)
    ************************************************************************************************************/
-    change(language) {
+    change(language: any) {
         window.localStorage.setItem('selectLanguage', language);
     }
 
