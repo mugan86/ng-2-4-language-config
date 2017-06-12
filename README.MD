@@ -4,7 +4,7 @@ This library use @ngx-translate dependencies and its own service to manage the t
 ## Instructions to install and configure
 ### From github
 ```ssh
-$ npm install https://github.com/mugan86/ng-2-4-language-config.git#0.1.6 --save
+$ npm install https://github.com/mugan86/ng-2-4-language-config.git#0.1.8 --save
 ```
 
 ### From NPM
@@ -51,7 +51,25 @@ export class AppComponent {
   constructor(private langService: LanguageConfigService) {}
 }
 ```
-Finally, we must add the translation files to the correct directory, which will be in ***src/assets/i18n/<language-code>.json***. For example for Spanish, we must add the file ***src/assets/i18n/es.json***.
+
+If you select want language:
+
+```typescript
+
+import { LanguageConfigService } from 'ng-2-4-language-config';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  constructor(private langService: LanguageConfigService) {
+    langService.useSelectLanguage('es'); //Load spanish language although i select from config basque
+  }
+}
+```
+Finally, we must add the translation files to the correct directory, which will be in ***src/assets/i18n/language-code.json***. For example for Spanish, we must add the file ***src/assets/i18n/es.json***.
 
 ## How to use it in the template?
 
