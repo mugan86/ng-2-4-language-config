@@ -12,12 +12,25 @@ export const langCodes = ['en', 'es', 'eu'];
 @Injectable()
 export class LanguageConfigService {
 
-    private selectLanguage: String;
+    private selectLanguage: string;
     private translate: TranslateService;
 
     constructor(translate: TranslateService) {
         this.translate = translate;
         this.load();
+    }
+
+    /***********************************************************************************************************
+   * @ngdoc method
+   * @name useSelectLanguage()
+   * @methodOf lang-config.service#method
+   * @params <language: string, this.selectLanguage: string>
+   * @description
+   * Function to load language select from component. Not checked our config value and browser config
+   ************************************************************************************************************/
+    useSelectLanguage(language: string) {
+        this.selectLanguage = language;
+        this.useLanguage(this.selectLanguage);
     }
 
     /***********************************************************************************************************
@@ -43,7 +56,7 @@ export class LanguageConfigService {
             this.change(String(this.selectLanguage));
         }
 
-        this.useLanguage();
+        this.useLanguage(this.selectLanguage);
         return this.translate;
     }
 
@@ -56,9 +69,9 @@ export class LanguageConfigService {
    * Function to load language to use in Angular App. Automatically detect our browser language and save in local
    * preferences. If value store in preferences, load selection from localStorage
    ************************************************************************************************************/
-    private useLanguage() {
-        this.translate.setDefaultLang(String(this.selectLanguage));
-        this.translate.use(String(this.selectLanguage));
+    private useLanguage(language: string) {
+        this.translate.setDefaultLang(language);
+        this.translate.use(language);
     }
 
     /***********************************************************************************************************
