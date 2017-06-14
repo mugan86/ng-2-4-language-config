@@ -60,7 +60,7 @@ export class LanguageConfigService {
         // Check if exist selection in preferences
         if (this.selectLanguage === '') { // Not configure select language
             const browserLang = this.translate.getBrowserLang();
-            this.selectLanguage = browserLang.match(this.getMatchedFromLangCodes()) ? browserLang : 'es';
+            this.selectLanguage = browserLang.match(this.getMatchedFromLangCodes()) ? browserLang : this.defaultLang;
             this.change(String(this.selectLanguage));
         }
 
