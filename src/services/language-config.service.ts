@@ -5,10 +5,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Service to manage Angular App all global language.
  * By default, if user not select language, show users browser language
  **********************************************************************/
-
-// Initialize constant to load languages codes, this codes uses to load assets/i18n directory json files
-//export const langCodes = ['en', 'es', 'eu'];
-
 @Injectable()
 export class LanguageConfigService {
 
@@ -16,14 +12,19 @@ export class LanguageConfigService {
     private translate: TranslateService;
 
     constructor(translate: TranslateService,
-                    @Inject('langCodes') private langCodes: string[],
+                    @Inject('languageCodes') private langCodes: string[],
                     @Inject('defaultLang') private defaultLang: string) {
+
+        // If not exist langCodes in parameter of constructor
+        // Initialize constant to load languages codes, this codes uses to load assets/i18n directory json files
+
         if (this.langCodes === undefined || this.langCodes.length === 0) {
-            this.langCodes = ['en', 'es', 'eu'];
+            this.langCodes = ['en', 'es'];
         }
         if (this.defaultLang === undefined || this.defaultLang === '') {
             this.defaultLang = 'es';
         }
+        console.log(this.getMatchedFromLangCodes());
         this.translate = translate;
         this.load();
     }
@@ -73,11 +74,13 @@ export class LanguageConfigService {
         let index = 0;
         let matchString = '/';
         this.langCodes.map(langCode => {
-            matchString = matchString + langCode + '|';
             // If last lang code
             if ( this.langCodes.length - 1 === index) {
-                matchString = matchString + '/';
+                matchString = matchString + langCode + '/';
+            } else {
+                matchString = matchString + langCode + '|';
             }
+            index ++;
         });
         console.log('MatchString: ' + matchString);
         return matchString;
