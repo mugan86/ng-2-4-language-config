@@ -21,7 +21,11 @@ import { LanguageConfigService } from './services/language-config.service';
     ]
 })
 export class LanguageConfigModule {
-  static forRoot(): ModuleWithProviders {
-        return {ngModule: LanguageConfigModule, providers: [LanguageConfigService]};
+  static forRoot(languageCodes?: string[], defaultLang?: string): ModuleWithProviders {
+        return {ngModule: LanguageConfigModule,
+                    providers: [LanguageConfigService,
+                                {provide: 'languageCodes', useValue: languageCodes},
+                                { provide: 'defaultLang', useValue: defaultLang}
+        ]};
     }
 }
