@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 /**********************************************************************
@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
  **********************************************************************/
 
 // Initialize constant to load languages codes, this codes uses to load assets/i18n directory json files
-export const langCodes = ['en', 'es', 'eu'];
+//export const langCodes = ['en', 'es', 'eu'];
 
 @Injectable()
 export class LanguageConfigService {
@@ -15,7 +15,15 @@ export class LanguageConfigService {
     private selectLanguage: string;
     private translate: TranslateService;
 
-    constructor(translate: TranslateService) {
+    constructor(translate: TranslateService,
+                    @Inject('langCodes') private langCodes: string[],
+                    @Inject('defaultLang') private defaultLang: string) {
+        if (this.langCodes === undefined || this.langCodes.length === 0) {
+            this.langCodes = ['en', 'es', 'eu'];
+        }
+        if (this.defaultLang === undefined || this.defaultLang === '') {
+            this.defaultLang = 'es';
+        }
         this.translate = translate;
         this.load();
     }
@@ -44,7 +52,7 @@ export class LanguageConfigService {
    ************************************************************************************************************/
     private load() {
         // Add Angular App all support languages
-        this.translate.addLangs(langCodes);
+        this.translate.addLangs(this.langCodes);
         this.selectLanguage = this.getLanguage();
 
         console.log(this.selectLanguage);
@@ -52,12 +60,27 @@ export class LanguageConfigService {
         // Check if exist selection in preferences
         if (this.selectLanguage === '') { // Not configure select language
             const browserLang = this.translate.getBrowserLang();
-            this.selectLanguage = browserLang.match(/en|es|eu/) ? browserLang : 'es';
+            this.selectLanguage = browserLang.match(this.getMatchedFromLangCodes()) ? browserLang : 'es';
             this.change(String(this.selectLanguage));
         }
 
         this.useLanguage(this.selectLanguage);
         return this.translate;
+    }
+
+    private getMatchedFromLangCodes(): string {
+        // /en|es|eu/
+        let index = 0;
+        let matchString = '/';
+        this.langCodes.map(langCode => {
+            matchString = matchString + langCode + '|';
+            // If last lang code
+            if ( this.langCodes.length - 1 === index) {
+                matchString = matchString + '/';
+            }
+        });
+        console.log('MatchString: ' + matchString);
+        return matchString;
     }
 
     /***********************************************************************************************************
