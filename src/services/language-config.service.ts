@@ -20,9 +20,13 @@ export class LanguageConfigService {
 
         if (this.langCodes === undefined || this.langCodes.length === 0) {
             this.langCodes = ['en', 'es'];
+            console.warn('You have not input the language codes that the application contains ' +
+                            'to assign the translation files you will have. It is assigned "es" ' +
+                            'and "en" for Spanish and English respectively');
         }
         if (this.defaultLang === undefined || this.defaultLang === '') {
             this.defaultLang = 'es';
+            console.warn('You have not entered the default language. The Spanish language will be assigned.');
         }
         console.log(this.getMatchedFromLangCodes());
         this.translate = translate;
