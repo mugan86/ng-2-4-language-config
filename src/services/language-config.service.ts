@@ -28,7 +28,6 @@ export class LanguageConfigService {
             this.defaultLang = 'es';
             console.warn('You have not entered the default language. The Spanish language will be assigned.');
         }
-        console.log(this.getMatchedFromLangCodes());
         this.translate = translate;
         this.load();
     }
@@ -74,7 +73,6 @@ export class LanguageConfigService {
     }
 
     private getMatchedFromLangCodes(): string {
-        // /en|es|eu/
         let index = 0;
         let matchString = '/';
         this.langCodes.map(langCode => {
@@ -86,7 +84,6 @@ export class LanguageConfigService {
             }
             index ++;
         });
-        console.log('MatchString: ' + matchString);
         return matchString;
     }
 
