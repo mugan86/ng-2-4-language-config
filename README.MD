@@ -27,7 +27,9 @@ import { LanguageConfigModule } from 'ng-2-4-language-config';
   imports: [
     BrowserModule,
     // Specify my library as an import
-    LanguageConfigModule
+    LanguageConfigModule.forRoot() // to load default values ['en', 'es'], 'es'
+    // OR assign we want values (we must add langcode.json files in src/assets!!!)
+    LanguageConfigModule.forRoot(['es', 'ca', 'pt', 'eu', 'en'], 'es')
   ],
   providers: [],
   bootstrap: [AppComponent],
