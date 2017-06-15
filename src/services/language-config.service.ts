@@ -1,6 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+// Use Interface to define root information
+import { LanguageConfigInterface } from './../interfaces/language-config.interface';
+
 /**********************************************************************
  * Service to manage Angular App all global language.
  * By default, if user not select language, show users browser language
@@ -12,26 +15,24 @@ export class LanguageConfigService {
     private translate: TranslateService;
 
     constructor(translate: TranslateService,
-                    @Inject('languageCodes') private langCodes: string[],
-                    @Inject('defaultLang') private defaultLang: string) {
+                    @Inject('config') private config: LanguageConfigInterface) {
 
         // If not exist langCodes in parameter of constructor
-        // Initialize constant to load languages codes, this codes uses 
-        // to load assets/i18n directory json files
-
-        if (this.langCodes === undefined || this.langCodes.length === 0) {
-            this.langCodes = ['en', 'es'];
+        // Initialize constant to load languages codes, this codes uses to load assets/i18n directory json files
+        console.log(config);
+        if (this.config.codes === undefined || this.config.codes.length === 0) {
+            this.config.codes = ['en', 'es'];
             console.warn('You have not input the language codes that the application contains ' +
                             'to assign the translation files you will have. It is assigned "es" ' +
                             'and "en" for Spanish and English respectively');
         }
-        if (this.defaultLang === undefined || this.defaultLang === '') {
-            this.defaultLang = 'es';
+        if (this.config.default === undefined || this.config.default === '') {
+            this.config.default = 'es';
             console.warn('You have not entered the default language. The Spanish language will be assigned.');
         }
         this.translate = translate;
-        if (this.getLanguage() !== this.defaultLang) {
-            this.updateInPreferences(this.defaultLang);
+        if (this.getLanguage() !== this.config.default) {
+            this.updateInPreferences(this.config.default);
         }
         this.load();
     }
@@ -60,7 +61,7 @@ export class LanguageConfigService {
    ************************************************************************************************************/
     private load() {
         // Add Angular App all support languages
-        this.translate.addLangs(this.langCodes);
+        this.translate.addLangs(this.config.codes);
         this.selectLanguage = this.getLanguage();
 
         console.log(this.selectLanguage);
@@ -68,7 +69,7 @@ export class LanguageConfigService {
         // Check if exist selection in preferences
         if (this.selectLanguage === '') { // Not configure select language
             const browserLang = this.translate.getBrowserLang();
-            this.selectLanguage = browserLang.match(this.getMatchedFromLangCodes()) ? browserLang : this.defaultLang;
+            this.selectLanguage = browserLang.match(this.getMatchedFromLangCodes()) ? browserLang : this.config.default;
             this.change(String(this.selectLanguage));
         }
 
@@ -79,9 +80,9 @@ export class LanguageConfigService {
     private getMatchedFromLangCodes(): string {
         let index = 0;
         let matchString = '/';
-        this.langCodes.map(langCode => {
+        this.config.codes.map(langCode => {
             // If last lang code
-            if ( this.langCodes.length - 1 === index) {
+            if ( this.config.codes.length - 1 === index) {
                 matchString = matchString + langCode + '/';
             } else {
                 matchString = matchString + langCode + '|';
