@@ -29,6 +29,9 @@ export class LanguageConfigService {
             console.warn('You have not entered the default language. The Spanish language will be assigned.');
         }
         this.translate = translate;
+        if (this.getLanguage() !== this.defaultLang) {
+            this.updateInPreferences(this.defaultLang);
+        }
         this.load();
     }
 
@@ -128,8 +131,20 @@ export class LanguageConfigService {
    * (code: es, eu or en in this case). After set change language, load layout with new language
    ************************************************************************************************************/
     change(language: any) {
-        window.localStorage.setItem('selectLanguage', language);
+        this.updateInPreferences(language);
         this.load();
+    }
+
+    /***********************************************************************************************************
+   * @ngdoc method
+   * @name updateInPreferences()
+   * @methodOf lang-preferences#method
+   * @params <language: any>
+   * @description
+   * Update in preferences with select lang code
+   ************************************************************************************************************/
+    private updateInPreferences(language: any) {
+        window.localStorage.setItem('selectLanguage', language);
     }
 
     /***********************************************************************************************************
@@ -144,6 +159,6 @@ export class LanguageConfigService {
         this.translate.get(text).subscribe((res: string) => {
             return res;
         });
-        return '';
+        return text;
     }
 }
