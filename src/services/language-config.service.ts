@@ -124,10 +124,12 @@ export class LanguageConfigService {
    * @methodOf lang-preferences#method
    * @params <language: any>
    * @description
-   * Changes language preference for the whole app with select language (code: es, eu or en in this case)
+   * Changes language preference for the whole app with select language
+   * (code: es, eu or en in this case). After set change language, load layout with new language
    ************************************************************************************************************/
     change(language: any) {
         window.localStorage.setItem('selectLanguage', language);
+        this.load();
     }
 
     /***********************************************************************************************************
