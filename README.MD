@@ -2,16 +2,16 @@
 
 This library use @ngx-translate dependencies and its own service to manage the translations in the language selects that can be by configuration and in case it is not configured by default the language of the browser.
 ## Instructions to install and configure
-### From github
-```ssh
-$ npm install https://github.com/mugan86/ng-2-4-language-config.git#0.1.9 --save
-```
 
-### From NPM
+### From NPM (Stable version)
 ```ssh
 $ npm install ng-2-4-language-config --save
 ```
 
+### From github (Beta version - Not Finish)
+```ssh
+$ npm install https://github.com/mugan86/ng-2-4-language-config.git#0.2.1
+```
 and then from your Angular AppModule:
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';

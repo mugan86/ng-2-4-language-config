@@ -16,7 +16,8 @@ export class LanguageConfigService {
                     @Inject('defaultLang') private defaultLang: string) {
 
         // If not exist langCodes in parameter of constructor
-        // Initialize constant to load languages codes, this codes uses to load assets/i18n directory json files
+        // Initialize constant to load languages codes, this codes uses 
+        // to load assets/i18n directory json files
 
         if (this.langCodes === undefined || this.langCodes.length === 0) {
             this.langCodes = ['en', 'es'];
