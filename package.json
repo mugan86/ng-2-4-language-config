@@ -1,6 +1,6 @@
 {
   "name": "ng-2-4-language-config",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
@@ -22,7 +22,7 @@
     "angular 4",
     "language-config",
     "string",
-    "pipes"
+    "i18n"
   ],
   "license": "MIT",
   "bugs": {
