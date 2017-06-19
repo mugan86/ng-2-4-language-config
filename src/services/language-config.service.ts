@@ -31,7 +31,7 @@ export class LanguageConfigService {
             console.warn('You have not entered the default language. The Spanish language will be assigned.');
         }
         this.translate = translate;
-        if (this.getLanguage() !== this.config.default) {
+        if (this.getLanguage() === '') { // First access or clear configure option
             this.updateInPreferences(this.config.default);
         }
         this.load();
