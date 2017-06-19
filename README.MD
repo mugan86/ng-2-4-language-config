@@ -1,6 +1,7 @@
 # Language Config Library in Angular 2/4
 
 This library use @ngx-translate dependencies and its own service to manage the translations in the language selects that can be by configuration and in case it is not configured by default the language of the browser.
+
 ## Instructions to install and configure
 ### From github
 ```ssh

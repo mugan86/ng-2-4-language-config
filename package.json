@@ -22,6 +22,7 @@
     "angular 4",
     "language-config",
     "string",
+    "app",
     "i18n"
   ],
   "license": "MIT",
