@@ -6,7 +6,7 @@ This library use @ngx-translate dependencies and its own service to manage the t
 
 ### From github
 ```ssh
-$ npm install https://github.com/mugan86/ng-2-4-language-config.git#0.2.1
+$ npm install https://github.com/mugan86/ng-2-4-language-config.git#<last-tag> 
 ```
 ### From NPM (Stable version)
 ```ssh
