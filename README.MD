@@ -79,8 +79,10 @@ Finally, we must add the translation files to the correct directory, which will 
 Now having all this correctly configured, we visualize it in the layout making use of Pipe 'translate'
 
 ```html
-{{ label | translate}}
+{{ 'label' | translate}}
 ```
+
+'label' is a one value that load from <language-code>.json
 
 ## License
 
