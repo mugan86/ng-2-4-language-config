@@ -11,9 +11,9 @@
     "declaration": true,
     "outDir": "./dist",
     "typeRoots": [
-      "node_modules/@types",
-      "node_modules/@ngx-translate",
-      "node_modules/@angular"
+      "../../node_modules/@types",
+      "../../node_modules/@ngx-translate",
+      "../../node_modules/@angular"
     ]
   },
   "exclude": [
