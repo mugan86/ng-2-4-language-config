@@ -13,7 +13,8 @@
     "typeRoots": [
       "node_modules/@types",
       "node_modules/@ngx-translate",
-      "node_modules/@angular"
+      "node_modules/@angular",
+      "src/assets/i18n"
     ]
   },
   "exclude": [
