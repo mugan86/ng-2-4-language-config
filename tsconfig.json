@@ -10,11 +10,11 @@
     "sourceMap": true,
     "declaration": true,
     "outDir": "./dist",
+    "assets": ["src/assets/i18n"],
     "typeRoots": [
       "node_modules/@types",
       "node_modules/@ngx-translate",
-      "node_modules/@angular",
-      "src/assets/i18n"
+      "node_modules/@angular"
     ]
   },
   "exclude": [
