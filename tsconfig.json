@@ -9,13 +9,17 @@
     "noImplicitReturns": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./lib",
     "typeRoots": [
       "../../node_modules/@types",
       "../../node_modules/@ngx-translate",
       "../../node_modules/@angular"
     ]
   },
+  "include": [
+    "index.ts",
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist",
