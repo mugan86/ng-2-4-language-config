@@ -2,9 +2,15 @@
 
 This library use @ngx-translate dependencies and its own service to manage the translations in the language selects that can be by configuration and in case it is not configured by default the language of the browser.
 
+**if you use npm >= 5.0.0 must install @ngx-translate dependencies manually with:**
+```ssh
+$ npm install @ngx-translate/core
+$ npm install @ngx-translate/http-loader
+```
+
 ## Instructions to install and configure
 
-### From github
+### From github (beta version)
 ```ssh
 $ npm install https://github.com/mugan86/ng-2-4-language-config.git#<last-tag> 
 ```
@@ -79,8 +85,10 @@ Finally, we must add the translation files to the correct directory, which will 
 Now having all this correctly configured, we visualize it in the layout making use of Pipe 'translate'
 
 ```html
-{{ label | translate}}
+{{ 'label' | translate}}
 ```
+
+'label' is a one value that load from <language-code>.json
 
 ## License
 
