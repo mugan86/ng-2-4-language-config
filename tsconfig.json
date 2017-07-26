@@ -18,7 +18,8 @@
   },
   "include": [
     "index.ts",
-    "src/**/*"
+    "index.js",
+    "index.js.map"
   ],
   "exclude": [
     "node_modules",
