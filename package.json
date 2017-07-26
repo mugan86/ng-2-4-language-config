@@ -1,6 +1,6 @@
 {
   "name": "ng-2-4-language-config",
-  "version": "0.2.7b",
+  "version": "0.2.8",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
