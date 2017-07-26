@@ -8,7 +8,8 @@
     "moduleResolution": "node",
     "removeComments": true,
     "sourceMap": true,
-    "outDir": "../lib/",
+    "rootDir": "./src",
+    "outDir": "./",
     "lib": ["dom", "es6"],
     "stripInternal": true,
         "typeRoots": [

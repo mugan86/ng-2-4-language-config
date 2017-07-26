@@ -29,7 +29,8 @@
   "bugs": {
     "url": "https://github.com/mugan86/ng-2-4-language-config.git/issues"
   },
-  "main": "./dist/index.js",
+  "main": "./index.js",
+  "typings": "./index.d.ts",
   "dependencies": {
     "@ngx-translate/core": "6.0.1",
     "@ngx-translate/http-loader": "0.0.3",
