@@ -2,6 +2,8 @@
 
 This library use @ngx-translate dependencies and its own service to manage the translations in the language selects that can be by configuration and in case it is not configured by default the language of the browser.
 
+**This library works until version 4.3 of Angular**
+
 **if you use npm >= 5.0.0 must install @ngx-translate dependencies manually with:**
 ```ssh
 $ npm install @ngx-translate/core
